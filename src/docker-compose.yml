@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  hris.webapplication:
+    image: ${DOCKER_REGISTRY-}hriswebapplication
+    build:
+      context: .
+      dockerfile: Hris.WebApplication/Dockerfile
+
+  hris.organization.webapi:
+    image: ${DOCKER_REGISTRY-}hrisorganizationwebapi
+    build:
+      context: .
+      dockerfile: Hris.Organization.WebApi/Dockerfile
+    depends_on:
+      - sql.data
+
+  hris.identity.webapi:
+    image: ${DOCKER_REGISTRY-}hrisidentitywebapi
+    build:
+      context: .
+      dockerfile: Hris.Identity.WebApi/Dockerfile
+
+
+  hris.gateway.webapi:
+    image: ${DOCKER_REGISTRY-}hrisgatewaywebapi
+    build:
+      context: .
+      dockerfile: Hris.Gateway.WebApi/Dockerfile
+
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"
+  
+

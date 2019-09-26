@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Hris.Common.Repositories.Interface
 {
-    public interface IEfRepository<TEntity> : IReadOnlyRepository<TEntity>, ITransactionAble where TEntity : class
+    public interface IEfRepository<TEntity> : IReadOnlyRepository<TEntity> where TEntity : class
     {
         void Insert(TEntity entitiy);
         void InsertRange(List<TEntity> entities);
@@ -12,6 +13,7 @@ namespace Hris.Common.Repositories.Interface
         void UpdateRange(List<TEntity> entities);
         void Delete(TEntity entity);
         void DeleteRange(List<TEntity> entities);
-        void Save();
+        //void Save();
+        //Task SaveAsync();
     }
 }

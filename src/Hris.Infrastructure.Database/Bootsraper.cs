@@ -11,7 +11,7 @@ namespace Hris.Infrastructure.Database
 {
     public static class Bootsraper
     {
-        public static void InitAppBootsraper(this IServiceCollection services, IConfiguration configuration)
+        public static void InitDbBootsraper(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<HrisContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString(Global.DbConnection.HrisConnection)));

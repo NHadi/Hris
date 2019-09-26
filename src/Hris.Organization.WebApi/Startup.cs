@@ -30,8 +30,8 @@ namespace Hris.Organization.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.InitCommonBootsraper();
-            services.InitAppBootsraper(Configuration);           
-            
+            services.InitDbBootsraper(Configuration);
+            services.InitAppBootsraper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }

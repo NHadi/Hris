@@ -10,8 +10,15 @@ namespace Hris.Organization.WebApi.Services.Interface
     public interface IEmployeeService
     {
         #region Department
-        Department GetDepartment(int id);
-        List<Department> GeteDepartments(DepartmentRequest request);
+        Task<Department> GetDepartment(Guid id);
+        Task<List<Department>> GetDepartments(string key);
+        Task CreateDepartment(DepartmentRequest request);
         #endregion
+        #region Employee
+        Task<Employee> GetEmployee(Guid id);
+        Task<List<Employee>> GetEmployees(string key);
+        Task CreateEmployee();
+        #endregion
+
     }
 }

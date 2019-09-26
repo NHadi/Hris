@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Hris.Common.Repositories
 {
@@ -27,6 +28,15 @@ namespace Hris.Common.Repositories
             }
         }
 
+        public async Task<IEnumerable<TEntity>> FromSqlAsync(string query = null, object param = null)
+        {
+            using (_sqlConnection)
+            {
+                _sqlConnection.Open();
+                return await _sqlConnection.QueryAsync<TEntity>(query, param);
+            }
+        }
+
         public void FromSqlWithoutReturn(string query = null, object param = null)
         {
 
@@ -34,6 +44,15 @@ namespace Hris.Common.Repositories
             {
                 _sqlConnection.Open();
                 _sqlConnection.Execute(query, param);
+            }
+        }
+
+        public async Task FromSqlWithoutReturnAsync(string query = null, object param = null)
+        {
+            using (_sqlConnection)
+            {
+                _sqlConnection.Open();
+                await _sqlConnection.ExecuteAsync(query, param);
             }
         }
     }

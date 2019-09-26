@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hris.Common.API.DTO;
 using Hris.Infrastructure.Database.Repositories.Interface;
+using Hris.Organization.WebApi.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hris.Organization.WebApi.Controllers
@@ -12,18 +13,21 @@ namespace Hris.Organization.WebApi.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly IDepartmentRepository _departmentRepository;
-        public DepartmentController(IDepartmentRepository departmentRepository)
+        private readonly IEmployeeService employeeService;
+        public DepartmentController(IEmployeeService employeeService)
         {
-            _departmentRepository = departmentRepository;
+            this.employeeService = employeeService;
         }
         // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var responAPI = _departmentRepository.Get().ToList();
+
+                await employeeService.CreateDepartment(new Models.DepartmentRequest { DepartmentCode = "P01", DepartmentName = "Test" });
+
+                var responAPI = await employeeService.GetDepartments("P01");
                 return Ok(new ApiOkResponse(responAPI, responAPI.Count));
             }
             catch (Exception ex)

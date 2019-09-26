@@ -12,6 +12,7 @@ namespace Hris.Common.Repositories
         {
             services.AddScoped(typeof(IDapperRepository<>), typeof(DapperRepository<>));
             services.AddScoped(typeof(IEfRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
         }
     }
 }

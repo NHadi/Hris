@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             LeavingRequest = new HashSet<LeavingRequest>();
         }
 
-        public int LeavingTypeId { get; set; }
+        public Guid LeavingTypeId { get; set; }
         public string LeavingTypeCode { get; set; }
         public string LeavingTypeName { get; set; }
         public bool? LeavingDeduction { get; set; }

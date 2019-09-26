@@ -7,14 +7,10 @@ namespace Hris.Infrastructure.Database.Contexts
 {
     public partial class HrisContext : DbContext
     {
-        public HrisContext()
-        {
-        }
 
         public HrisContext(DbContextOptions<HrisContext> options)
             : base(options)
         {
-            this.Database.EnsureCreated();
         }
 
         public virtual DbSet<AbsenceType> AbsenceType { get; set; }
@@ -68,7 +64,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("absence_type");
 
-                entity.Property(e => e.AbsenceTypeId).HasColumnName("absence_type_id");
+                entity.Property(e => e.AbsenceTypeId)
+                    .HasColumnName("absence_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AbsenceTypeCode)
                     .HasColumnName("absence_type_code")
@@ -124,7 +122,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("action_taken");
 
-                entity.Property(e => e.ActionTakenId).HasColumnName("action_taken_id");
+                entity.Property(e => e.ActionTakenId)
+                    .HasColumnName("action_taken_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.ActionTakenCode)
                     .HasColumnName("action_taken_code")
@@ -168,7 +168,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("asset");
 
-                entity.Property(e => e.AssetId).HasColumnName("asset_id");
+                entity.Property(e => e.AssetId)
+                    .HasColumnName("asset_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AssetCode)
                     .HasColumnName("asset_code")
@@ -212,7 +214,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("attendance");
 
-                entity.Property(e => e.AttendanceId).HasColumnName("attendance_id");
+                entity.Property(e => e.AttendanceId)
+                    .HasColumnName("attendance_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AbsenceTypeId).HasColumnName("absence_type_id");
 
@@ -284,7 +288,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("branch");
 
-                entity.Property(e => e.BranchId).HasColumnName("branch_id");
+                entity.Property(e => e.BranchId)
+                    .HasColumnName("branch_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.BranchCode)
                     .HasColumnName("branch_code")
@@ -328,7 +334,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("day_type");
 
-                entity.Property(e => e.DayTypeId).HasColumnName("day_type_id");
+                entity.Property(e => e.DayTypeId)
+                    .HasColumnName("day_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -383,7 +391,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("department");
 
-                entity.Property(e => e.DepartmentId).HasColumnName("department_id");
+                entity.Property(e => e.DepartmentId)
+                    .HasColumnName("department_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -427,7 +437,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("division");
 
-                entity.Property(e => e.DivisionId).HasColumnName("division_id");
+                entity.Property(e => e.DivisionId)
+                    .HasColumnName("division_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -479,7 +491,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("education");
 
-                entity.Property(e => e.EducationId).HasColumnName("education_id");
+                entity.Property(e => e.EducationId)
+                    .HasColumnName("education_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -523,7 +537,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee");
 
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+                entity.Property(e => e.EmployeeId)
+                    .HasColumnName("employee_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Address)
                     .HasColumnName("address")
@@ -750,7 +766,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_asset");
 
-                entity.Property(e => e.EmployeeAssetId).HasColumnName("employee_asset_id");
+                entity.Property(e => e.EmployeeAssetId)
+                    .HasColumnName("employee_asset_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AssetId).HasColumnName("asset_id");
 
@@ -807,7 +825,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_education_formal");
 
-                entity.Property(e => e.EmployeeEducationFormalId).HasColumnName("employee_education_formal_id");
+                entity.Property(e => e.EmployeeEducationFormalId)
+                    .HasColumnName("employee_education_formal_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Address)
                     .HasColumnName("address")
@@ -881,7 +901,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_education_unformal");
 
-                entity.Property(e => e.EmployeeEducationUnformalId).HasColumnName("employee_education_unformal_id");
+                entity.Property(e => e.EmployeeEducationUnformalId)
+                    .HasColumnName("employee_education_unformal_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Address)
                     .HasColumnName("address")
@@ -951,7 +973,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_experience");
 
-                entity.Property(e => e.EmployeeExperienceId).HasColumnName("employee_experience_id");
+                entity.Property(e => e.EmployeeExperienceId)
+                    .HasColumnName("employee_experience_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Address)
                     .HasColumnName("address")
@@ -1028,7 +1052,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_family");
 
-                entity.Property(e => e.EmployeeFamilyId).HasColumnName("employee_family_id");
+                entity.Property(e => e.EmployeeFamilyId)
+                    .HasColumnName("employee_family_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Birthdate)
                     .HasColumnName("birthdate")
@@ -1106,7 +1132,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_salary");
 
-                entity.Property(e => e.EmployeeSalaryId).HasColumnName("employee_salary_id");
+                entity.Property(e => e.EmployeeSalaryId)
+                    .HasColumnName("employee_salary_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AttendanceAllowance)
                     .HasColumnName("attendance_allowance")
@@ -1170,7 +1198,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_skill");
 
-                entity.Property(e => e.EmployeeSkillId).HasColumnName("employee_skill_id");
+                entity.Property(e => e.EmployeeSkillId)
+                    .HasColumnName("employee_skill_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1222,7 +1252,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_status");
 
-                entity.Property(e => e.EmployeeStatusId).HasColumnName("employee_status_id");
+                entity.Property(e => e.EmployeeStatusId)
+                    .HasColumnName("employee_status_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1266,7 +1298,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("employee_type");
 
-                entity.Property(e => e.EmployeeTypeId).HasColumnName("employee_type_id");
+                entity.Property(e => e.EmployeeTypeId)
+                    .HasColumnName("employee_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1310,7 +1344,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("grade");
 
-                entity.Property(e => e.GradeId).HasColumnName("grade_id");
+                entity.Property(e => e.GradeId)
+                    .HasColumnName("grade_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1354,7 +1390,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("leave_remaining");
 
-                entity.Property(e => e.LeaveRemainingId).HasColumnName("leave_remaining_id");
+                entity.Property(e => e.LeaveRemainingId)
+                    .HasColumnName("leave_remaining_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AdjLeave).HasColumnName("adj_leave");
 
@@ -1392,7 +1430,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("leaving_request");
 
-                entity.Property(e => e.LeavingRequestId).HasColumnName("leaving_request_id");
+                entity.Property(e => e.LeavingRequestId)
+                    .HasColumnName("leaving_request_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1469,7 +1509,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("leaving_type");
 
-                entity.Property(e => e.LeavingTypeId).HasColumnName("leaving_type_id");
+                entity.Property(e => e.LeavingTypeId)
+                    .HasColumnName("leaving_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1517,7 +1559,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("medical_reimbursement");
 
-                entity.Property(e => e.MedicalReimbursementId).HasColumnName("medical_reimbursement_id");
+                entity.Property(e => e.MedicalReimbursementId)
+                    .HasColumnName("medical_reimbursement_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.ClaimAmount).HasColumnName("claim_amount");
 
@@ -1591,7 +1635,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("medical_type");
 
-                entity.Property(e => e.MedicalTypeId).HasColumnName("medical_type_id");
+                entity.Property(e => e.MedicalTypeId)
+                    .HasColumnName("medical_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1635,7 +1681,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("payroll_type");
 
-                entity.Property(e => e.PayrollTypeId).HasColumnName("payroll_type_id");
+                entity.Property(e => e.PayrollTypeId)
+                    .HasColumnName("payroll_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1674,7 +1722,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("permit_request");
 
-                entity.Property(e => e.PermitRequestId).HasColumnName("permit_request_id");
+                entity.Property(e => e.PermitRequestId)
+                    .HasColumnName("permit_request_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1737,7 +1787,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("position");
 
-                entity.Property(e => e.PositionId).HasColumnName("position_id");
+                entity.Property(e => e.PositionId)
+                    .HasColumnName("position_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1783,7 +1835,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("punishment");
 
-                entity.Property(e => e.PunishmentId).HasColumnName("punishment_id");
+                entity.Property(e => e.PunishmentId)
+                    .HasColumnName("punishment_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.ActionTakenId).HasColumnName("action_taken_id");
 
@@ -1844,7 +1898,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("tax_rate");
 
-                entity.Property(e => e.TaxRateId).HasColumnName("tax_rate_id");
+                entity.Property(e => e.TaxRateId)
+                    .HasColumnName("tax_rate_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1884,7 +1940,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("tax_status");
 
-                entity.Property(e => e.TaxStatusId).HasColumnName("tax_status_id");
+                entity.Property(e => e.TaxStatusId)
+                    .HasColumnName("tax_status_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -1925,7 +1983,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("training");
 
-                entity.Property(e => e.TrainingId).HasColumnName("training_id");
+                entity.Property(e => e.TrainingId)
+                    .HasColumnName("training_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Certified).HasColumnName("certified");
 
@@ -2012,7 +2072,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("training_type");
 
-                entity.Property(e => e.TrainingTypeId).HasColumnName("training_type_id");
+                entity.Property(e => e.TrainingTypeId)
+                    .HasColumnName("training_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")
@@ -2056,7 +2118,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("travelling_expense");
 
-                entity.Property(e => e.TravellingExpenseId).HasColumnName("travelling_expense_id");
+                entity.Property(e => e.TravellingExpenseId)
+                    .HasColumnName("travelling_expense_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Amount).HasColumnName("amount");
 
@@ -2128,7 +2192,9 @@ namespace Hris.Infrastructure.Database.Contexts
             {
                 entity.ToTable("travelling_type");
 
-                entity.Property(e => e.TravellingTypeId).HasColumnName("travelling_type_id");
+                entity.Property(e => e.TravellingTypeId)
+                    .HasColumnName("travelling_type_id")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreatedBy)
                     .HasColumnName("created_by")

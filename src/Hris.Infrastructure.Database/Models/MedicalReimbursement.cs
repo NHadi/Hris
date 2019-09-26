@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class MedicalReimbursement
     {
-        public int MedicalReimbursementId { get; set; }
+        public Guid MedicalReimbursementId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
-        public int? EmployeeId { get; set; }
-        public int? MedicalTypeId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public Guid? MedicalTypeId { get; set; }
         public DateTime? DateMedical { get; set; }
         public string PatientName { get; set; }
         public double? ClaimAmount { get; set; }

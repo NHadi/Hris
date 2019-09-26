@@ -5,14 +5,14 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeFamily
     {
-        public int EmployeeFamilyId { get; set; }
-        public int? EmployeeId { get; set; }
+        public Guid EmployeeFamilyId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public string Name { get; set; }
         public string Relation { get; set; }
         public string Gender { get; set; }
         public DateTime? Birthdate { get; set; }
         public string Birthplace { get; set; }
-        public int EducationId { get; set; }
+        public Guid EducationId { get; set; }
         public string Job { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }

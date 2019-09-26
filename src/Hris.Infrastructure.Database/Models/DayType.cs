@@ -11,7 +11,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int DayTypeId { get; set; }
+        public Guid DayTypeId { get; set; }
         public string DayTypeName { get; set; }
         public TimeSpan? DefaultIn { get; set; }
         public TimeSpan? DefaultOut { get; set; }

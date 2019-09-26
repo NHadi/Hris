@@ -5,8 +5,8 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeSalary
     {
-        public int EmployeeSalaryId { get; set; }
-        public int? EmployeeId { get; set; }
+        public Guid EmployeeSalaryId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public string BasicSalary { get; set; }
         public string PositionAllowance { get; set; }
         public string AttendanceAllowance { get; set; }

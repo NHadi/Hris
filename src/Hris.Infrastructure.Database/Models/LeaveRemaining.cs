@@ -5,8 +5,8 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class LeaveRemaining
     {
-        public int LeaveRemainingId { get; set; }
-        public int? EmployeeId { get; set; }
+        public Guid LeaveRemainingId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public int? Year { get; set; }
         public int? Plafon { get; set; }
         public int? Used { get; set; }

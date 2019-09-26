@@ -5,8 +5,8 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeEducationUnformal
     {
-        public int EmployeeEducationUnformalId { get; set; }
-        public int EmployeeId { get; set; }
+        public Guid EmployeeEducationUnformalId { get; set; }
+        public Guid EmployeeId { get; set; }
         public string CourseType { get; set; }
         public string Object { get; set; }
         public string HeldBy { get; set; }

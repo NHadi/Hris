@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             TravellingExpense = new HashSet<TravellingExpense>();
         }
 
-        public int TravellingTypeId { get; set; }
+        public Guid TravellingTypeId { get; set; }
         public string TravellingTypeCode { get; set; }
         public string TravellingTypeName { get; set; }
         public string Description { get; set; }

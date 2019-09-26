@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int BranchId { get; set; }
+        public Guid BranchId { get; set; }
         public string BranchCode { get; set; }
         public string BranchName { get; set; }
         public string Description { get; set; }

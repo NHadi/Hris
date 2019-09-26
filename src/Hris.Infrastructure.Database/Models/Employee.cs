@@ -24,7 +24,7 @@ namespace Hris.Infrastructure.Database.Models
             TravellingExpense = new HashSet<TravellingExpense>();
         }
 
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
         public string FingerCode { get; set; }
         public string Nik { get; set; }
         public string FullName { get; set; }
@@ -41,20 +41,20 @@ namespace Hris.Infrastructure.Database.Models
         public string PhoneNo { get; set; }
         public string MobileNo { get; set; }
         public DateTime? JoinDate { get; set; }
-        public int? GradeId { get; set; }
-        public int? BranchId { get; set; }
-        public int? DepartmentId { get; set; }
-        public int? DivisionId { get; set; }
-        public int? PositionId { get; set; }
-        public int? EmployeeTypeId { get; set; }
+        public Guid? GradeId { get; set; }
+        public Guid? BranchId { get; set; }
+        public Guid? DepartmentId { get; set; }
+        public Guid? DivisionId { get; set; }
+        public Guid? PositionId { get; set; }
+        public Guid? EmployeeTypeId { get; set; }
         public DateTime? EmployeeTypeValidDate { get; set; }
-        public int? EmployeeStatusId { get; set; }
-        public int? ParentEmployeeId { get; set; }
-        public int? EducationId { get; set; }
+        public Guid? EmployeeStatusId { get; set; }
+        public Guid? ParentEmployeeId { get; set; }
+        public Guid? EducationId { get; set; }
         public string NpwpNo { get; set; }
-        public int? TaxStatusId { get; set; }
-        public int? DayTypeId { get; set; }
-        public int? PayrollTypeId { get; set; }
+        public Guid? TaxStatusId { get; set; }
+        public Guid? DayTypeId { get; set; }
+        public Guid? PayrollTypeId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Shift { get; set; }

@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Training = new HashSet<Training>();
         }
 
-        public int TrainingTypeId { get; set; }
+        public Guid TrainingTypeId { get; set; }
         public string TrainingTypeCode { get; set; }
         public string TrainingTypeName { get; set; }
         public string Description { get; set; }

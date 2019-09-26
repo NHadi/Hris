@@ -5,8 +5,8 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeExperience
     {
-        public int EmployeeExperienceId { get; set; }
-        public int EmployeeId { get; set; }
+        public Guid EmployeeExperienceId { get; set; }
+        public Guid EmployeeId { get; set; }
         public DateTime? From { get; set; }
         public DateTime? Until { get; set; }
         public string CompanyName { get; set; }

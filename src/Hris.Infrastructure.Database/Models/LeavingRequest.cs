@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class LeavingRequest
     {
-        public int LeavingRequestId { get; set; }
+        public Guid LeavingRequestId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
-        public int? EmployeeId { get; set; }
-        public int? LeavingTypeId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public Guid? LeavingTypeId { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? UntilDate { get; set; }
         public int? Days { get; set; }

@@ -6,20 +6,17 @@ using Hris.Identity.WebApi.Models;
 using Hris.Identity.WebApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Hris.Identity.WebApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class AuthController : ControllerBase
-    {        
-        private readonly ILogger<AuthController> _logger;
-        private readonly IUserService _userService;
+    {
+        private IUserService _userService;
 
-        public AuthController(ILogger<AuthController> logger, IUserService userService)
+        public AuthController(IUserService userService)
         {
-            _logger = logger;
             _userService = userService;
         }
 

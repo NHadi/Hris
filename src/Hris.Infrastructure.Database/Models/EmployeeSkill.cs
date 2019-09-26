@@ -5,8 +5,8 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeSkill
     {
-        public int EmployeeSkillId { get; set; }
-        public int EmployeeId { get; set; }
+        public Guid EmployeeSkillId { get; set; }
+        public Guid EmployeeId { get; set; }
         public string SkillName { get; set; }
         public string SkillLevel { get; set; }
         public string Description { get; set; }

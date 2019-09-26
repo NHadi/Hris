@@ -5,9 +5,9 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class EmployeeAsset
     {
-        public int EmployeeAssetId { get; set; }
-        public int EmployeeId { get; set; }
-        public int? AssetId { get; set; }
+        public Guid EmployeeAssetId { get; set; }
+        public Guid EmployeeId { get; set; }
+        public Guid? AssetId { get; set; }
         public DateTime? LendDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public string Description { get; set; }

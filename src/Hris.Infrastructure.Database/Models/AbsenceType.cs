@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Attendance = new HashSet<Attendance>();
         }
 
-        public int AbsenceTypeId { get; set; }
+        public Guid AbsenceTypeId { get; set; }
         public string AbsenceTypeCode { get; set; }
         public string AbsenceTypeName { get; set; }
         public bool? LeavingDeduction { get; set; }

@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Punishment = new HashSet<Punishment>();
         }
 
-        public int ActionTakenId { get; set; }
+        public Guid ActionTakenId { get; set; }
         public string ActionTakenCode { get; set; }
         public string ActionTakenName { get; set; }
         public string Description { get; set; }

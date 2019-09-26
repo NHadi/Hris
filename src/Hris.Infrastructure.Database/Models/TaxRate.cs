@@ -5,7 +5,7 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class TaxRate
     {
-        public int TaxRateId { get; set; }
+        public Guid TaxRateId { get; set; }
         public double? RatePercent { get; set; }
         public double? FromAmount { get; set; }
         public double? ToAmount { get; set; }

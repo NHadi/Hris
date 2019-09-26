@@ -11,7 +11,7 @@ namespace Hris.Infrastructure.Database.Models
             EmployeeFamily = new HashSet<EmployeeFamily>();
         }
 
-        public int EducationId { get; set; }
+        public Guid EducationId { get; set; }
         public string EducationCode { get; set; }
         public string EducationName { get; set; }
         public string Description { get; set; }

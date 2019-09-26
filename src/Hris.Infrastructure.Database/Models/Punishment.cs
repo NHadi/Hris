@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class Punishment
     {
-        public int PunishmentId { get; set; }
+        public Guid PunishmentId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
-        public int? EmployeeId { get; set; }
-        public int? ActionTakenId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public Guid? ActionTakenId { get; set; }
         public DateTime? ValidDate { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }

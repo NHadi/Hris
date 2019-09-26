@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int TaxStatusId { get; set; }
+        public Guid TaxStatusId { get; set; }
         public string TaxStatusName { get; set; }
         public double? Ptkp { get; set; }
         public string Description { get; set; }

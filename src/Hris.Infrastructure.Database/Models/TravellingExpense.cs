@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class TravellingExpense
     {
-        public int TravellingExpenseId { get; set; }
+        public Guid TravellingExpenseId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
-        public int? EmployeeId { get; set; }
-        public int? TravellingTypeId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public Guid? TravellingTypeId { get; set; }
         public string Destination { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? UntilDate { get; set; }

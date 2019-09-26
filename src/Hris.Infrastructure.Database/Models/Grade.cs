@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int GradeId { get; set; }
+        public Guid GradeId { get; set; }
         public string GradeCode { get; set; }
         public string GradeName { get; set; }
         public string Description { get; set; }

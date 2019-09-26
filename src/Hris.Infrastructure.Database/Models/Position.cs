@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int PositionId { get; set; }
+        public Guid PositionId { get; set; }
         public string PositionCode { get; set; }
         public string PositionName { get; set; }
         public int? PositionLevel { get; set; }

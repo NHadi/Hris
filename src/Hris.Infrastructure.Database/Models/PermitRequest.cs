@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class PermitRequest
     {
-        public int PermitRequestId { get; set; }
+        public Guid PermitRequestId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
         public DateTime? PermitDate { get; set; }
-        public int? EmployeeId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public TimeSpan? FromHour { get; set; }
         public TimeSpan? UntilHour { get; set; }
         public string Description { get; set; }

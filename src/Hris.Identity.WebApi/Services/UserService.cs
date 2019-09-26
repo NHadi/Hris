@@ -1,4 +1,5 @@
-﻿using Hris.Identity.WebApi.Models;
+﻿using Hris.Common;
+using Hris.Identity.WebApi.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -25,13 +26,6 @@ namespace Hris.Identity.WebApi.Services
             new User { AccountNumber = 3648755, Currency = "EUR", FullName = "John Smith", Username = "jsmith", Password = "admin@123" },
         };
 
-        private readonly AppSettings _appSettings;
-
-        public UserService(IOptions<AppSettings> appSettings)
-        {
-            _appSettings = appSettings.Value;
-        }
-
         public Models.SecurityToken Authenticate(string username, string password)
         {
             var user = _users.SingleOrDefault(x => x.Username == username && x.Password == password);
@@ -42,7 +36,7 @@ namespace Hris.Identity.WebApi.Services
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(Global.Key.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

@@ -6,7 +6,7 @@
     <ProjectGuid>8aa91c72-e06b-4cb1-a256-bd5a0b422ac5</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/</DockerServiceUrl>
-    <DockerServiceName>hris.webapplication</DockerServiceName>
+    <DockerServiceName>hris.gateway.webapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

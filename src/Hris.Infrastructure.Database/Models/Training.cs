@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class Training
     {
-        public int TrainingId { get; set; }
+        public Guid TrainingId { get; set; }
         public string NoTransaction { get; set; }
         public DateTime? Date { get; set; }
-        public int? EmployeeId { get; set; }
-        public int? TrainingTypeId { get; set; }
+        public Guid? EmployeeId { get; set; }
+        public Guid? TrainingTypeId { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? UntilDate { get; set; }
         public string Subject { get; set; }

@@ -5,11 +5,11 @@ namespace Hris.Infrastructure.Database.Models
 {
     public partial class Attendance
     {
-        public int AttendanceId { get; set; }
-        public int? EmployeeId { get; set; }
+        public Guid AttendanceId { get; set; }
+        public Guid? EmployeeId { get; set; }
         public string FingerCode { get; set; }
-        public int? DayTypeId { get; set; }
-        public int? AbsenceTypeId { get; set; }
+        public Guid? DayTypeId { get; set; }
+        public Guid? AbsenceTypeId { get; set; }
         public DateTime? Date { get; set; }
         public DateTime? DefaultIn { get; set; }
         public DateTime? DefaultOut { get; set; }

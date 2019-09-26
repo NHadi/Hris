@@ -5,11 +5,11 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "hris.organization.webapi",
-          "Port": 443
+          "Host": "localhost",
+          "Port": 44388
         }
       ],
-      "UpstreamPathTemplate": "api-organization/{everything}",
+      "UpstreamPathTemplate": "/api-organization/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
@@ -21,8 +21,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "hris.identity.webapi",
-          "Port": 443
+          "Host": "localhost",
+          "Port": 44360
         }
       ],
       "UpstreamPathTemplate": "/api-auth/{everything}",

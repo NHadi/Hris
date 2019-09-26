@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             Employee = new HashSet<Employee>();
         }
 
-        public int PayrollTypeId { get; set; }
+        public Guid PayrollTypeId { get; set; }
         public string PayrollTypeName { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }

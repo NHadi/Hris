@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hris.Common;
+using Hris.Infrastructure.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,24 +12,22 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using Ocelot.Provider.Consul;
 
 namespace Hris.Gateway.WebApi
 {
     public class Startup
     {
-        public Startup(IWebHostEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile("configuration.json")
-                .AddEnvironmentVariables();
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(env.ContentRootPath)
+                   .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
+                   .AddEnvironmentVariables();
 
             Configuration = builder.Build();
         }
@@ -37,14 +37,11 @@ namespace Hris.Gateway.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddOcelot(Configuration).AddConsul();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddOcelot(Configuration);
 
-            var appSettingSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingSection);
-
-            var appSettings = appSettingSection.Get<AppSettings>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            var key = Encoding.ASCII.GetBytes(Global.Key.Secret);
 
             services.AddAuthentication(x =>
             {
@@ -59,32 +56,17 @@ namespace Hris.Gateway.WebApi
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 };
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseOcelot().Wait();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
-    }
-
-    public class AppSettings
-    {
-        public string Secret { get; set; }
     }
 }

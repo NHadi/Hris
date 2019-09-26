@@ -10,7 +10,7 @@ namespace Hris.Infrastructure.Database.Models
             MedicalReimbursement = new HashSet<MedicalReimbursement>();
         }
 
-        public int MedicalTypeId { get; set; }
+        public Guid MedicalTypeId { get; set; }
         public string MedicalTypeCode { get; set; }
         public string MedicalTypeName { get; set; }
         public string Description { get; set; }

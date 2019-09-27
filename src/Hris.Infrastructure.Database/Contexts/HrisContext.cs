@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Hris.Common.Domain;
 using Hris.Infrastructure.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -7,6 +9,9 @@ namespace Hris.Infrastructure.Database.Contexts
 {
     public partial class HrisContext : DbContext
     {
+        public HrisContext()
+        {
+        }
 
         public HrisContext(DbContextOptions<HrisContext> options)
             : base(options)
@@ -236,6 +241,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .HasColumnName("break_out")
                     .HasColumnType("datetime");
 
+                entity.Property(e => e.CreatedBy)
+                    .HasColumnName("created_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate)
+                    .HasColumnName("created_date")
+                    .HasColumnType("datetime");
+
                 entity.Property(e => e.Date)
                     .HasColumnName("date")
                     .HasColumnType("date");
@@ -265,6 +279,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .IsUnicode(false);
 
                 entity.Property(e => e.LateIn).HasColumnName("late_in");
+
+                entity.Property(e => e.ModifyBy)
+                    .HasColumnName("modify_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate)
+                    .HasColumnName("modify_date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.WorkHour).HasColumnName("work_hour");
 
@@ -582,6 +605,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.CreatedBy)
+                    .HasColumnName("created_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate)
+                    .HasColumnName("created_date")
+                    .HasColumnType("datetime");
+
                 entity.Property(e => e.DayTypeId).HasColumnName("day_type_id");
 
                 entity.Property(e => e.DepartmentId).HasColumnName("department_id");
@@ -643,6 +675,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .HasColumnName("mobile_no")
                     .HasMaxLength(15)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ModifyBy)
+                    .HasColumnName("modify_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate)
+                    .HasColumnName("modify_date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.Nationality)
                     .HasColumnName("nationality")
@@ -1151,6 +1192,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
+                entity.Property(e => e.CreatedBy)
+                    .HasColumnName("created_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate)
+                    .HasColumnName("created_date")
+                    .HasColumnType("datetime");
+
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
 
                 entity.Property(e => e.FunctionalAllowance)
@@ -1162,6 +1212,15 @@ namespace Hris.Infrastructure.Database.Contexts
                     .HasColumnName("meal_allowance")
                     .HasMaxLength(250)
                     .IsUnicode(false);
+
+                entity.Property(e => e.ModifyBy)
+                    .HasColumnName("modify_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate)
+                    .HasColumnName("modify_date")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.PlaceAllowance)
                     .HasColumnName("place_allowance")
@@ -1403,6 +1462,15 @@ namespace Hris.Infrastructure.Database.Contexts
 
                 entity.Property(e => e.CreatedDate)
                     .HasColumnName("created_date")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.ModifyBy)
+                    .HasColumnName("modify_by")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifyDate)
+                    .HasColumnName("modify_date")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.Description)

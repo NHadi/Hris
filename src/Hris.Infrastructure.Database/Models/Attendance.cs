@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class Attendance
+    public partial class Attendance : EntityBase
     {
         public Guid AttendanceId { get; set; }
         public Guid? EmployeeId { get; set; }
@@ -20,7 +21,7 @@ namespace Hris.Infrastructure.Database.Models
         public TimeSpan? LateIn { get; set; }
         public TimeSpan? WorkHour { get; set; }
         public TimeSpan? EffectiveHour { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; }        
 
         public virtual AbsenceType AbsenceType { get; set; }
         public virtual DayType DayType { get; set; }

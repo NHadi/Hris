@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hris.Common\Hris.Common.csproj" />
+    <ProjectReference Include="..\Hris.Infrastructure.Database\Hris.Infrastructure.Database.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Hris.Application.Services.Interface;
 using Hris.Common.API.DTO;
-using Hris.Infrastructure.Database.Repositories.Interface;
-using Hris.Organization.WebApi.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hris.Organization.WebApi.Controllers
@@ -13,10 +10,10 @@ namespace Hris.Organization.WebApi.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly IEmployeeService employeeService;
-        public DepartmentController(IEmployeeService employeeService)
+        private readonly IMasterService masterService;
+        public DepartmentController(IMasterService masterService)
         {
-            this.employeeService = employeeService;
+            this.masterService = masterService;
         }
         // GET api/values
         [HttpGet]
@@ -24,10 +21,9 @@ namespace Hris.Organization.WebApi.Controllers
         {
             try
             {
+                await masterService.CreateDepartment(new Application.Services.Dto.Master.DepartmentRequest { DepartmentCode = "P01", DepartmentName = "Dummy" });
 
-                await employeeService.CreateDepartment(new Models.DepartmentRequest { DepartmentCode = "P01", DepartmentName = "Test" });
-
-                var responAPI = await employeeService.GetDepartments("P01");
+                var responAPI = await masterService.GetDepartments("P01");
                 return Ok(new ApiOkResponse(responAPI, responAPI.Count));
             }
             catch (Exception ex)

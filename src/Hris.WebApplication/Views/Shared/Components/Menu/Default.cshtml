@@ -1,45 +1,61 @@
-﻿<div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
-    <div class="navbar-header">
-        <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto">
-                <a class="navbar-brand" href="index.html">
-                    <img class="brand-logo" alt="Chameleon admin logo" src="~/theme-assets/images/logo/logo.png" />
-                    <h3 class="brand-text">Chameleon</h3>
-                </a>
-            </li>
-            <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
-        </ul>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Hris.Infrastructure.Database.Models.MenuItem>
+
+<div class="left side-menu">
+    <div class="sidebar-inner slimscrollleft">
+        <!--- Divider -->
+        <div id="sidebar-menu">
+            <ul>
+                <li class="text-muted menu-title">Navigation</li>
+                @foreach (var menuItem in Model.Where(x => !x.Parent.HasValue).OrderBy(x => x.Position))
+                {
+                    var url = menuItem.Url;
+                    var target = "_self";
+
+                    if (url.StartsWith("~"))
+                        url = Url.Content(url);
+
+                    if (menuItem.OpenInNewWindow)
+                        target = "_blank";
+
+                    var hasParent = Model.Where(x => x.Parent == menuItem.Id);
+
+                    if (hasParent.Any())
+                    {
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="@menuItem.Icon"></i> <span> @menuItem.Title </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                @foreach (var subMenu in hasParent.OrderBy(x => x.Position))
+                                {
+                                    if (subMenu.Url.StartsWith("~"))
+                                        url = Url.Content(url);
+
+                                    if (subMenu.OpenInNewWindow)
+                                        target = "_blank";
+
+                                    <li><a href="@url" target="@target">@menuItem.Title</a></li>
+                                }
+
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+
+                        <li>
+                            <a href="@url" target="@target" class="waves-effect"><i class="@menuItem.Icon"></i> <span> @menuItem.Title </span></a>
+                        </li>
+                    }
+                }
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="main-menu-content">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="active">
-                <a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="charts.html"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Charts</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="icons.html"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Icons</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="cards.html"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Cards</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="buttons.html"><i class="ft-box"></i><span class="menu-title" data-i18n="">Buttons</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="typography.html"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Typography</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="tables.html"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Tables</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="https://themeselection.com/demo/chameleon-admin-template/documentation"><i class="ft-book"></i><span class="menu-title" data-i18n="">Documentation</span></a>
-            </li>
-        </ul>
-    </div><a class="btn btn-danger btn-block btn-glow btn-upgrade-pro mx-1" href="https://themeselection.com/products/chameleon-admin-modern-bootstrap-webapp-dashboard-html-template-ui-kit/" target="_blank">Download PRO!</a>
-    <div class="navigation-background"></div>
 </div>
+
+
+<!-- Left Sidebar End -->

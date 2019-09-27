@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class MedicalReimbursement
+    public partial class MedicalReimbursement : EntityBase
     {
         public Guid MedicalReimbursementId { get; set; }
         public string NoTransaction { get; set; }
@@ -14,11 +15,7 @@ namespace Hris.Infrastructure.Database.Models
         public string PatientName { get; set; }
         public double? ClaimAmount { get; set; }
         public string Status { get; set; }
-        public string Description { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public string Description { get; set; }        
         public bool? Deleted { get; set; }
 
         public virtual Employee Employee { get; set; }

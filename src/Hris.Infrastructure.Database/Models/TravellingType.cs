@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class TravellingType
+    public partial class TravellingType : EntityBase
     {
         public TravellingType()
         {
@@ -13,11 +14,7 @@ namespace Hris.Infrastructure.Database.Models
         public Guid TravellingTypeId { get; set; }
         public string TravellingTypeCode { get; set; }
         public string TravellingTypeName { get; set; }
-        public string Description { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public string Description { get; set; }        
         public bool? Deleted { get; set; }
 
         public virtual ICollection<TravellingExpense> TravellingExpense { get; set; }

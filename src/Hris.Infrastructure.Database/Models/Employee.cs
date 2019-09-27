@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class Employee
+    public partial class Employee : EntityBase
     {
         public Employee()
         {
@@ -66,8 +67,7 @@ namespace Hris.Infrastructure.Database.Models
         public string Nationality { get; set; }
         public string Bank { get; set; }
         public string BankBranch { get; set; }
-        public string BankAccountNo { get; set; }
-
+        public string BankAccountNo { get; set; }        
         public virtual Branch Branch { get; set; }
         public virtual DayType DayType { get; set; }
         public virtual Department Department { get; set; }

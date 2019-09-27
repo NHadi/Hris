@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class Division
+    public partial class Division : EntityBase
     {
         public Division()
         {
@@ -14,11 +15,7 @@ namespace Hris.Infrastructure.Database.Models
         public Guid DepartmentId { get; set; }
         public string DivisionCode { get; set; }
         public string DivisionName { get; set; }
-        public string Description { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public string Description { get; set; }        
         public bool? Deleted { get; set; }
 
         public virtual Department Department { get; set; }

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Infrastructure.Database.Models
 {
-    public partial class EmployeeSalary
+    public partial class EmployeeSalary : EntityBase
     {
         public Guid EmployeeSalaryId { get; set; }
         public Guid? EmployeeId { get; set; }
@@ -16,8 +17,7 @@ namespace Hris.Infrastructure.Database.Models
         public string BbmAllowance { get; set; }
         public string TelecommunicationAllowance { get; set; }
         public string PlaceAllowance { get; set; }
-        public string FunctionalAllowance { get; set; }
-
+        public string FunctionalAllowance { get; set; }        
         public virtual Employee Employee { get; set; }
     }
 }

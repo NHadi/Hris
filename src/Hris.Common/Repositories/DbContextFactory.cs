@@ -16,7 +16,7 @@ namespace Hris.Common.Repositories
             _configuration = configuration;
         }
 
-        public string GetConnectionString(string connectionString) => _configuration.GetSection(connectionString).Value;
-        public IDbConnection GetDbConnection(string connectionString) => new SqlConnection(_configuration.GetSection(connectionString).Value);
+        public string GetConnectionString(string connectionString) => _configuration.GetConnectionString(connectionString);
+        public IDbConnection GetDbConnection(string connectionString) => new SqlConnection(_configuration.GetConnectionString(connectionString));
     }
 }

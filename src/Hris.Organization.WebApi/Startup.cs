@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Hris.Application.Services.Bootsraper;
+using Hris.Application.Services.Mapper.Employees;
 using Hris.Common;
 using Hris.Infrastructure.Database;
 using Hris.Infrastructure.Database.Contexts;
@@ -32,7 +35,11 @@ namespace Hris.Organization.WebApi
             services.InitCommonBootsraper();
             services.InitDbBootsraper(Configuration);
             services.InitAppBootsraper();
+            services.AddAutoMapper(typeof(MappingProfile));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
 
         }
 

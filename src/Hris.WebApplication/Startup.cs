@@ -47,10 +47,14 @@ namespace Hris.WebApplication
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
+            {                
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+                    pattern: "{controller=Auth}/{action=Index}/{id?}");
             });
         }
     }

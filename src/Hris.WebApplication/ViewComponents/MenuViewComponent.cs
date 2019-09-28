@@ -23,10 +23,10 @@ namespace Hris.WebApplication.ViewComponents
                 new MenuItem { Id = Guid.NewGuid(), Position = 5, Title = "Medical", Url = "~/Medical", Icon = "md md-local-hospital" },
                 new MenuItem { Id = Guid.NewGuid(), Position = 6, Title = "Organization", Url = "~/Organization", Icon = "md md-group" },
                 new MenuItem { Id = Guid.NewGuid(), Position = 7, Title = "Payroll", Url = "~/Payroll", Icon = "md md-attach-money" },
-                new MenuItem { Id = Guid.NewGuid(), Position = 8, Title = "Performance Appraisals", Url = "~/PerformanceAppraisals", Icon = "md md-trending-up" },
+                new MenuItem { Id = Guid.NewGuid(), Position = 8, Title = "Appraisals", Url = "~/PerformanceAppraisals", Icon = "md md-trending-up" },
                 new MenuItem { Id = Guid.NewGuid(), Position = 9, Title = "Recruitment", Url = "~/Recruitment", Icon = "md md-group-add" },
-                new MenuItem { Id = Guid.NewGuid(), Position = 10, Title = "Training", Url = "~/Training", Icon = "md md-trending-up" },
-                new MenuItem { Id = Guid.NewGuid(), Position = 11, Title = "Travelling", Url = "~/Travelling", Icon = "md md-trending-up" }
+                new MenuItem { Id = Guid.NewGuid(), Position = 10, Title = "Training", Url = "~/Training", Icon = "md md-school" },
+                new MenuItem { Id = Guid.NewGuid(), Position = 11, Title = "Travelling", Url = "~/Travelling", Icon = "md md-public" }
             };
 
 

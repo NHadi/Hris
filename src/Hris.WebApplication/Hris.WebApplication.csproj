@@ -8,12 +8,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hris.Common\Hris.Common.csproj" />
     <ProjectReference Include="..\Hris.Infrastructure.Database\Hris.Infrastructure.Database.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\" />
+    <Folder Include="Areas\Attendance\" />
+    <Folder Include="Areas\Leaving\" />
+    <Folder Include="Areas\Medical\" />
+    <Folder Include="Areas\ravelling\" />
+    <Folder Include="Areas\Training\" />
+    <Folder Include="Areas\Recruitment\" />
+    <Folder Include="Areas\PerformanceAppraisals\" />
+    <Folder Include="Areas\Payroll\" />
+    <Folder Include="Areas\Organization\" />
   </ItemGroup>
 
 </Project>

@@ -27,7 +27,7 @@
       ],
       "UpstreamPathTemplate": "/api-auth/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
-    }
+    },    
   ],
   "GlobalConfiguration": {
     "UseServiceDiscovery": false

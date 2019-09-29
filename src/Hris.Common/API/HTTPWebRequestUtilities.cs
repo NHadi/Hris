@@ -10,15 +10,17 @@ namespace Hris.Common.API
     public class HTTPWebRequestUtilities<T> where T : class
     {
         private readonly string _basePath;
-        public HTTPWebRequestUtilities(string basePath)
+        private readonly string _token;
+        public HTTPWebRequestUtilities(string basePath, string token)
         {
             _basePath = basePath;
-        }
+            _token = token;
+        }        
 
-        private string ProcessRequest(string method, string url, object param = null, string token = null)
+        private string ProcessRequest(string method, string url, object param = null)
         {
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(_basePath + url);
-            httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+            httpWebRequest.Headers.Add("Authorization", "Bearer " + _token);
 
             if (method != Global.Method.GET)
             {
@@ -42,11 +44,11 @@ namespace Hris.Common.API
             return ResponseString;
         }
 
-        public T Request(string method, string url, object param = null, string token = null)
+        public T Request(string method, string url, object param = null)
         {
             try
             {
-                var ResponseString = ProcessRequest(method, url, param, token);
+                var ResponseString = ProcessRequest(method, url, param);
                 var result = JsonConvert.DeserializeObject<T>(ResponseString);
                 return result;
             }
@@ -56,11 +58,11 @@ namespace Hris.Common.API
             }
 
         }
-        public IEnumerable<T> Requests(string method, string url, object param = null, string token = null)
+        public IEnumerable<T> Requests(string method, string url, object param = null)
         {
             try
             {
-                var ResponseString = ProcessRequest(method, url, param, token);
+                var ResponseString = ProcessRequest(method, url, param);
                 var result = JsonConvert.DeserializeObject<List<T>>(ResponseString);
                 return result;
             }

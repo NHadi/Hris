@@ -34,16 +34,6 @@ namespace Hris.Organization.WebApi
             services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddHealthChecks()
-                .AddDiskStorageHealthCheck(delegate (DiskStorageOptions diskStorageOptions)
-                {
-                    diskStorageOptions.AddDrive(@"C:\", 10);
-                }, name: "My Drive", HealthStatus.Unhealthy)
-                .AddSqlServer(Configuration["ConnectionStrings:HrisConnection"]);            
-            services.AddHealthChecksUI();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,18 +48,7 @@ namespace Hris.Organization.WebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            // HealthCheck middleware
-            app.UseHealthChecks("/hc", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
-            app.UseHealthChecksUI(delegate (Options options)
-            {
-                options.UIPath= "/hc-ui";                
-            });
-
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }

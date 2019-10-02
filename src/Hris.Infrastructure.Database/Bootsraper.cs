@@ -1,4 +1,5 @@
 ﻿using Hris.Common;
+using Hris.Common.Securities;
 using Hris.Infrastructure.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,7 @@ namespace Hris.Infrastructure.Database
     public static class Bootsraper
     {
         public static void InitDbBootsraper(this IServiceCollection services, IConfiguration configuration)
-        {
+        {            
             services.AddDbContext<HrisContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString(Global.DbConnection.HrisConnection)));
 

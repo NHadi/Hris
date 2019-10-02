@@ -1,7 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Hris.Application.Services.Bootsraper;
+using Hris.Application.Services.Mapper.Employees;
+using Hris.Common;
+using Hris.Infrastructure.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Hris.Master.WebApi
 {
@@ -24,6 +31,14 @@ namespace Hris.Master.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.InitCommonBootsraper();
+            services.InitDbBootsraper(Configuration);
+            services.InitAppBootsraper();
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            string xmlPath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "swagger.xml");
+            services.ConfigSwagger("Master Service", xmlPath);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -34,6 +49,13 @@ namespace Hris.Master.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // FOR UI Interface API
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", $"HRIS Microservices API {Global.API.Version}");
+            });
 
             app.UseMvc();
         }

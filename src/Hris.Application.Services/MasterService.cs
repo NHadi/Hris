@@ -2,6 +2,7 @@
 using Hris.Application.Services.Dto.Master;
 using Hris.Application.Services.Interface;
 using Hris.Common.Repositories.Interface;
+using Hris.Domain.master;
 using Hris.Infrastructure.Database.Contexts;
 using Hris.Infrastructure.Database.Models;
 using Hris.Infrastructure.Database.Repositories.Interface;
@@ -55,9 +56,9 @@ namespace Hris.Application.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<Department>> GetDepartments(string key)
+        public async Task<List<DepartmentDto>> GetDepartments(string key)
         {
-          var data =  await _departmentRepository.GetAsync(x => x.DepartmentCode.Contains(key) || x.DepartmentName.Contains(key));
+          var data = await _departmentRepository.GetDepartmentByKey(key);
           return data.ToList();
         }
     }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hris.Common.Securities;
 using Microsoft.AspNetCore.Mvc;
+using static Hris.Common.Global;
 
 namespace Hris.Master.WebApi.Controllers
 {
@@ -14,7 +16,9 @@ namespace Hris.Master.WebApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var encrypt = Encryptor.Encrypt("Data Source=.\\;Initial Catalog=Hris;Integrated Security=False;User ID=sa;Password=P@55w0rd;");
+            var decrypt = Encryptor.Decrypt(encrypt);
+            return new string[] { "value1", "value2", encrypt, decrypt };
         }
 
         // GET api/values/5

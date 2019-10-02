@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hris.Master.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Hris.Master.WebApi.Controllers.DepartmentController.Get">
+            <summary>
+            GEt ALL
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

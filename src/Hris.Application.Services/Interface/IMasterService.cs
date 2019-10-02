@@ -1,4 +1,5 @@
 ﻿using Hris.Application.Services.Dto.Master;
+using Hris.Domain.master;
 using Hris.Infrastructure.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Hris.Application.Services.Interface
     public interface IMasterService
     {
         Task<Department> GetDepartment(Guid id);
-        Task<List<Department>> GetDepartments(string key);
+        Task<List<DepartmentDto>> GetDepartments(string key);
         Task CreateDepartment(DepartmentRequest request);
     }
 }

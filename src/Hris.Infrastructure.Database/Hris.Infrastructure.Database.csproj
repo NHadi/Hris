@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hris.Common\Hris.Common.csproj" />
+    <ProjectReference Include="..\Hris.Domain\Hris.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Hris.Common;
 using Hris.Common.Repositories;
 using Hris.Common.Repositories.Interface;
+using Hris.Domain.master;
 using Hris.Infrastructure.Database.Contexts;
 using Hris.Infrastructure.Database.Models;
 using Hris.Infrastructure.Database.Repositories.Interface;
@@ -22,10 +23,15 @@ namespace Hris.Infrastructure.Database.Repositories
             _dbContextFactory = dbContextFactory;
         }
 
-        public async Task<IEnumerable<Department>> GetDepartmentByCode(string code)
+        public async Task<IEnumerable<DepartmentDto>> GetDepartmentByKey(string key = null)
         {
-            var result = await new DapperRepository<Department>(_dbContextFactory.GetDbConnection(Global.DbConnection.HrisConnection))
-                            .FromSqlAsync("SELECT * FROM Department where department_code like @keyword", new { keyword = "%" + code + "%" });
+            var qry = "SELECT * FROM department ";
+
+            if (key != null)
+                qry += "where DepartmentCode like @keyword or DepartmentName like @keyword ";
+
+            var result = await new DapperRepository<DepartmentDto>(_dbContextFactory.GetDbConnection(Global.DbConnection.HrisConnection))
+                            .FromSqlAsync(qry, new { keyword = "%" + key + "%" });
 
             return result;
         }

@@ -8,8 +8,14 @@ namespace Hris.Common.Securities
 {
     public class Encryptor
     {
-        public static string Encrypt(string clearText, string EncryptionKey)
+        public static string Encrypt(string clearText, string EncryptionKey = null)
         {
+
+            if (EncryptionKey == null)
+            {
+                EncryptionKey = Global.Key.Secret;
+            }
+
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
             {
@@ -28,8 +34,13 @@ namespace Hris.Common.Securities
             }
             return clearText;
         }
-        public static string Decrypt(string cipherText, string EncryptionKey)
+        public static string Decrypt(string cipherText, string EncryptionKey = null)
         {
+            if (EncryptionKey == null)
+            {
+                EncryptionKey = Global.Key.Secret;
+            }
+
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
             {

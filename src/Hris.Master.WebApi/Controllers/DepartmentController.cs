@@ -1,29 +1,36 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Hris.Application.Services.Interface;
 using Hris.Common.API.DTO;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Hris.Organization.WebApi.Controllers
+namespace Hris.Master.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private readonly IMasterService masterService;
-        public DepartmentController(IMasterService masterService)
+        private readonly IMasterService _masterService;
+        private readonly IMapper _mapper;
+        public DepartmentController(IMasterService masterService, IMapper mapper)
         {
-            this.masterService = masterService;
+            _masterService = masterService;
+            _mapper = mapper;
         }
         // GET api/values
+        /// <summary>
+        /// GEt ALL
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
-                await masterService.CreateDepartment(new Application.Services.Dto.Master.DepartmentRequest { DepartmentCode = "P01", DepartmentName = "Dummy" });
-
-                var responAPI = await masterService.GetDepartments("P01");
+                var responAPI = await _masterService.GetDepartments("P01");
                 return Ok(new ApiOkResponse(responAPI, responAPI.Count));
             }
             catch (Exception ex)

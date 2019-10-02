@@ -1,4 +1,5 @@
 ﻿using Hris.Common.Repositories.Interface;
+using Hris.Domain.master;
 using Hris.Infrastructure.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,6 @@ namespace Hris.Infrastructure.Database.Repositories.Interface
 {
     public interface IDepartmentRepository : IEfRepository<Department>
     {
-        Task<IEnumerable<Department>> GetDepartmentByCode(string code);
+        Task<IEnumerable<DepartmentDto>> GetDepartmentByKey(string key);
     }
 }

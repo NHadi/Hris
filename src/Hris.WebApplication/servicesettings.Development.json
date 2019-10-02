@@ -1,0 +1,20 @@
+{
+  "ConnectionStrings": {
+    "HrisConnection": "Data Source=.\\;Initial Catalog=Hris;Integrated Security=False;User ID=sa;Password=sP@55w0rd;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "API": {
+    "Organization": "https://localhost:44333/api-organization/values",
+    "Administration": "https://localhost:44333/api-administration/values",
+    "Administration": "https://localhost:44333/api-administration/values",
+    "LaporanFilePath": "\\LaporanFilePath\\",
+    "MstTemplatePath": "\\MstTemplatePath\\",
+    "ApplicationUpdatePath": "\\ApplicationUpdatePath\\"
+  }
+}

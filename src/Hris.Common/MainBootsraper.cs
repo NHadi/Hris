@@ -2,6 +2,7 @@
 using Hris.Common.API.Interface;
 using Hris.Common.Repositories;
 using Hris.Common.Repositories.Interface;
+using Hris.Common.Utlities.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
@@ -15,9 +16,14 @@ namespace Hris.Common
         public static void InitCommonBootsraper(this IServiceCollection services)
         {
             services.AddTransient<IDbContextFactory, DbContextFactory>();
-            services.AddTransient<IUrlApiFactory, UrlApiFactory>();            
+            services.AddTransient<IUrlApiFactory, UrlApiFactory>();
 
             RepositoryBootsraper.RegisterServices(services);
+        }
+
+        public static void InitHealthChecksBootsraper(this IServiceCollection services)
+        {
+            services.AddTransient<IHttpCheck, HttpCheck>();
         }
 
 

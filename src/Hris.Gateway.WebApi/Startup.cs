@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using HealthChecks.UI.Client;
+using HealthChecks.UI.Configuration;
 using Hris.Common;
-using Hris.Infrastructure.Database;
+using Hris.Common.Securities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -39,8 +35,8 @@ namespace Hris.Gateway.WebApi
         {
             services.AddOcelot(Configuration);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);           
+
             var key = Encoding.ASCII.GetBytes(Global.Key.Secret);
 
             services.AddAuthentication(x =>
@@ -64,9 +60,10 @@ namespace Hris.Gateway.WebApi
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
+        {           
+            app.InitSecurityBootsraper();
             app.UseAuthentication();
-            app.UseOcelot().Wait();
+            app.UseOcelot().Wait();           
         }
     }
 }

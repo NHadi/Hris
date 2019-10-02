@@ -1,0 +1,15 @@
+{
+  "api": {
+    "organization": "https://localhost:44333/api-organization/",
+    "administration": "https://localhost:44333/api-administration/",
+    "attendance": "https://localhost:44333/api-attendance/",
+    "leaving": "https://localhost:44333/api-leaving/",
+    "medical": "https://localhost:44333/api-medical/",
+    "payroll": "https://localhost:44333/api-payroll/",
+    "performance-appraisals": "https://localhost:44333/api-performance-appraisals/",
+    "recruitment": "https://localhost:44333/api-recruitment/",
+    "training": "https://localhost:44333/api-training/",
+    "travelling": "https://localhost:44333/api-travelling/",
+    "master": "https://localhost:44333/api-master/"
+  }
+}

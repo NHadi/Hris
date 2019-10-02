@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hris.Organization.WebApi.Controllers
+namespace Hris.Master.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class ValuesController : ControllerBase
     {
         // GET api/values
         [HttpGet]

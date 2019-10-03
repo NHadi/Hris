@@ -3,6 +3,7 @@ using Hris.Common.API.DTO;
 using Hris.Domain.Aggregates.Master;
 using Hris.Domain.Aggregates.Master.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,12 @@ namespace Hris.Master.WebApi.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IMasterService _masterService;
-        public DepartmentController(IMasterService masterService)
+        private readonly ILogger<DepartmentController> _logger;
+
+        public DepartmentController(IMasterService masterService, ILogger<DepartmentController> logger)
         {
             _masterService = masterService;
+            _logger = logger;
         }
         /// <summary>
         /// Get Department 
@@ -35,6 +39,7 @@ namespace Hris.Master.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Get Department/?code=&name=&description throw Exception with param[code={code}&name={name}&description={description}]");                
                 return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
             }
         }
@@ -54,6 +59,7 @@ namespace Hris.Master.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Get Department/Id throw Exception with param[Id={id}]");
                 return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
             }
         }
@@ -73,6 +79,7 @@ namespace Hris.Master.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Insert Department throw Exception with param {request} [Code = {DepartmentCode}, Name = {DepartmentName}, Description = {Description}] Exception", request, request.DepartmentCode, request.DepartmentName, request.DepartmentName);
                 return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
             }
         }
@@ -93,6 +100,7 @@ namespace Hris.Master.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Update Department throw Exception with param [Id = {id}, request = {request}] [Code = {DepartmentCode}, Name = {DepartmentName}, Description = {Description}] Exception", id , request, request.DepartmentCode, request.DepartmentName, request.DepartmentName);
                 return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
             }
         }
@@ -112,6 +120,7 @@ namespace Hris.Master.WebApi.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Delete Department/Id throw Exception with param[Id={id}]");
                 return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
             }
         }

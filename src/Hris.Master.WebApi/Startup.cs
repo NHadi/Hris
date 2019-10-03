@@ -10,7 +10,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Serilog;
 
 namespace Hris.Master.WebApi
 {
@@ -28,6 +30,7 @@ namespace Hris.Master.WebApi
         {
             services.InitCommonBootsraper();            
             services.InitIoCBootsraper(Configuration);
+            services.InitLogger(Configuration);
             
             string xmlPath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "swagger.xml");
             services.ConfigSwagger("Master Service", xmlPath);
@@ -36,8 +39,11 @@ namespace Hris.Master.WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // Add serilog
+            loggerFactory.AddSerilog();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

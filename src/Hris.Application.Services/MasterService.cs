@@ -4,6 +4,7 @@ using Hris.Domain.Aggregates.Master;
 using Hris.Domain.Aggregates.Master.Interface;
 using Hris.Domain.Models;
 using Hris.Infrastructure.Database.Contexts;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Hris.Application.Services.Master
         private readonly IUnitOfWork<HrisContext> _uow;
         private readonly IDepartmentRepository _departmentRepository;
         private readonly IMapper _mapper;
+
         public MasterService(IUnitOfWork<HrisContext> uow,
             IMapper mapper,
             IDepartmentRepository departmentRepository
@@ -23,7 +25,7 @@ namespace Hris.Application.Services.Master
         {
             _uow = uow;
             _mapper = mapper;
-            _departmentRepository = departmentRepository;            
+            _departmentRepository = departmentRepository;
         }
         public async Task CreateDepartment(DepartmentRequest request)
         {
@@ -85,17 +87,14 @@ namespace Hris.Application.Services.Master
                 _uow.BeginTransaction();
 
                 var data = await GetDepartment(id);
-                if (data != null)
-                {
-                    data.DepartmentName = request.DepartmentName ?? data.DepartmentName;
-                    data.DepartmentCode = request.DepartmentCode ?? data.DepartmentCode;
-                    data.Description = request.Description ?? data.Description;
-                    data.ModifyBy = "Dummy";
+                data.DepartmentName = request.DepartmentName ?? data.DepartmentName;
+                data.DepartmentCode = request.DepartmentCode ?? data.DepartmentCode;
+                data.Description = request.Description ?? data.Description;
+                data.ModifyBy = "Dummy";
 
-                    _departmentRepository.Update(data);
-                }
+                _departmentRepository.Update(data);
 
-                
+
                 _uow.CommitTransaction();
 
                 await _uow.CommitAsync();

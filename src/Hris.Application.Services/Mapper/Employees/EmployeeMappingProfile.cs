@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using Hris.Application.Services.Dto.Master;
-using Hris.Infrastructure.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Hris.Domain.Aggregates.Master;
+using Hris.Domain.Models;
 
 namespace Hris.Application.Services.Mapper.Employees
 {

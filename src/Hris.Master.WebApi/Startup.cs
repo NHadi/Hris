@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using AutoMapper;
 using Hris.Application.Services.Bootsraper;
 using Hris.Application.Services.Mapper.Employees;
 using Hris.Common;
+using Hris.Infrastructure.CrossCutting;
 using Hris.Infrastructure.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Hris.Master.WebApi
@@ -31,9 +26,8 @@ namespace Hris.Master.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.InitCommonBootsraper();
-            services.InitDbBootsraper(Configuration);
-            services.InitAppBootsraper();
+            services.InitCommonBootsraper();            
+            services.InitIoCBootsraper(Configuration);
             services.AddAutoMapper(typeof(MappingProfile));
 
             string xmlPath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "swagger.xml");

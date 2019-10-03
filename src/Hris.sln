@@ -57,11 +57,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth", "auth", "{2127CF93-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "securities", "securities", "{324FF358-893E-4566-98E0-8E8A52B4E1D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hris.Master.WebApi", "Hris.Master.WebApi\Hris.Master.WebApi.csproj", "{3C2FC99E-464B-4684-91FB-1437B21B53CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hris.Master.WebApi", "Hris.Master.WebApi\Hris.Master.WebApi.csproj", "{3C2FC99E-464B-4684-91FB-1437B21B53CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain", "domain", "{06EC819D-C876-43FD-9B8C-9B0A42E66E2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hris.Domain", "Hris.Domain\Hris.Domain.csproj", "{3F664129-04B3-42AB-B310-DF12B48C614C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hris.Domain", "Hris.Domain\Hris.Domain.csproj", "{3F664129-04B3-42AB-B310-DF12B48C614C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "crossCutting", "crossCutting", "{3931F6A1-5B90-4A64-BE1C-2874CB568598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hris.Infrastructure.CrossCutting", "Hris.Infrastructure.CrossCutting\Hris.Infrastructure.CrossCutting.csproj", "{03AEF9AD-2A56-4702-AEAB-B2BB93533C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +145,10 @@ Global
 		{3F664129-04B3-42AB-B310-DF12B48C614C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F664129-04B3-42AB-B310-DF12B48C614C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F664129-04B3-42AB-B310-DF12B48C614C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AEF9AD-2A56-4702-AEAB-B2BB93533C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AEF9AD-2A56-4702-AEAB-B2BB93533C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AEF9AD-2A56-4702-AEAB-B2BB93533C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AEF9AD-2A56-4702-AEAB-B2BB93533C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -175,6 +183,8 @@ Global
 		{3C2FC99E-464B-4684-91FB-1437B21B53CF} = {03009F80-BE3C-4842-B890-48F345FD6124}
 		{06EC819D-C876-43FD-9B8C-9B0A42E66E2A} = {9A0F610F-1A18-4493-8AD9-564266FBF08F}
 		{3F664129-04B3-42AB-B310-DF12B48C614C} = {06EC819D-C876-43FD-9B8C-9B0A42E66E2A}
+		{3931F6A1-5B90-4A64-BE1C-2874CB568598} = {B3F18CB7-8447-4ED0-B2C4-569A75C3D534}
+		{03AEF9AD-2A56-4702-AEAB-B2BB93533C00} = {3931F6A1-5B90-4A64-BE1C-2874CB568598}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51F6A124-68CE-479E-9C2E-4B503C62B3F0}

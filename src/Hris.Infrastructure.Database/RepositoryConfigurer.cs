@@ -1,9 +1,6 @@
-﻿using Hris.Infrastructure.Database.Repositories;
-using Hris.Infrastructure.Database.Repositories.Interface;
+﻿using Hris.Domain.Aggregates.Master.Interface;
+using Hris.Infrastructure.Database.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Hris.Infrastructure.Database
 {

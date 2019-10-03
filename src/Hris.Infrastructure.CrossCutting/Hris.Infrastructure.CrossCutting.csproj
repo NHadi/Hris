@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hris.Application.Services\Hris.Application.Services.csproj" />
     <ProjectReference Include="..\Hris.Common\Hris.Common.csproj" />
     <ProjectReference Include="..\Hris.Infrastructure.Database\Hris.Infrastructure.Database.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Validations\" />
   </ItemGroup>
 
 </Project>

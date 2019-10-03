@@ -5,15 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="administration\" />
-    <Folder Include="attendance\" />
-    <Folder Include="leaving\" />
-    <Folder Include="travelling\" />
-    <Folder Include="training\" />
-    <Folder Include="recruitment\" />
-    <Folder Include="performanceAppraisals\" />
-    <Folder Include="payroll\" />
-    <Folder Include="organization\" />
+    <Folder Include="Aggregates\Administration\" />
+    <Folder Include="Aggregates\Attendance\" />
+    <Folder Include="Aggregates\Leaving\" />
+    <Folder Include="Aggregates\Travelling\" />
+    <Folder Include="Aggregates\Training\" />
+    <Folder Include="Aggregates\Recruitment\" />
+    <Folder Include="Aggregates\PerformanceAppraisals\" />
+    <Folder Include="Aggregates\Payroll\" />
+    <Folder Include="Aggregates\Organization\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hris.Common\Hris.Common.csproj" />
   </ItemGroup>
 
 </Project>

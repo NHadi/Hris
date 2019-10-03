@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Hris.Application.Services.Interface;
 using Hris.Common.API.DTO;
+using Hris.Domain.Aggregates.Master.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,11 +13,9 @@ namespace Hris.Master.WebApi.Controllers
     public class DepartmentController : ControllerBase
     {
         private readonly IMasterService _masterService;
-        private readonly IMapper _mapper;
-        public DepartmentController(IMasterService masterService, IMapper mapper)
+        public DepartmentController(IMasterService masterService)
         {
             _masterService = masterService;
-            _mapper = mapper;
         }
         // GET api/values
         /// <summary>

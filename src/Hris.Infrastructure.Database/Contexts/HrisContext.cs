@@ -1,9 +1,5 @@
-﻿using System;
-using System.Linq;
-using Hris.Common.Domain;
-using Hris.Infrastructure.Database.Models;
+﻿using Hris.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Hris.Infrastructure.Database.Contexts
 {

@@ -1,14 +1,11 @@
 ﻿using Hris.Common;
 using Hris.Common.Repositories;
 using Hris.Common.Repositories.Interface;
-using Hris.Domain.master;
+using Hris.Domain.Aggregates.Master;
+using Hris.Domain.Aggregates.Master.Interface;
+using Hris.Domain.Models;
 using Hris.Infrastructure.Database.Contexts;
-using Hris.Infrastructure.Database.Models;
-using Hris.Infrastructure.Database.Repositories.Interface;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Hris.Infrastructure.Database.Repositories

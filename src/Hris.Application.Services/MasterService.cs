@@ -27,7 +27,6 @@ namespace Hris.Application.Services.Master
         }
         public async Task CreateDepartment(DepartmentRequest request)
         {
-
             try
             {
                 _uow.BeginTransaction();
@@ -48,15 +47,64 @@ namespace Hris.Application.Services.Master
             }
         }
 
-        public Task<Department> GetDepartment(Guid id)
+        public async Task DeleteDepartment(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _uow.BeginTransaction();
+
+                var data = await _departmentRepository.GetByIdAsync(id);
+                _departmentRepository.Delete(data);
+
+                _uow.CommitTransaction();
+
+                await _uow.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                _uow.RollbackTransaction();
+                throw ex;
+            }
+            
         }
 
-        public async Task<List<DepartmentDto>> GetDepartments(string key)
+        public async Task<Department> GetDepartment(Guid id)
+        => await _departmentRepository.GetByIdAsync(id);
+        
+
+        public async Task<List<DepartmentDto>> GetDepartments(DepartmentRequest request)
         {
-          var data = await _departmentRepository.GetDepartmentByKey(key);
+          var data = await _departmentRepository.GetDepartmentByKey(request);
           return data.ToList();
+        }
+
+        public async Task UpdateDepartment(Guid id, DepartmentRequest request)
+        {
+            try
+            {
+                _uow.BeginTransaction();
+
+                var data = await GetDepartment(id);
+                if (data != null)
+                {
+                    data.DepartmentName = request.DepartmentName ?? data.DepartmentName;
+                    data.DepartmentCode = request.DepartmentCode ?? data.DepartmentCode;
+                    data.Description = request.Description ?? data.Description;
+                    data.ModifyBy = "Dummy";
+
+                    _departmentRepository.Update(data);
+                }
+
+                
+                _uow.CommitTransaction();
+
+                await _uow.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                _uow.RollbackTransaction();
+                throw ex;
+            }
         }
     }
 }

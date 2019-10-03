@@ -1,20 +1,17 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class MedicalType
+    public partial class MedicalType : EntityBase
     {
         public MedicalType()
         {
             MedicalReimbursement = new HashSet<MedicalReimbursement>();
         }
 
-        public Guid MedicalTypeId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid MedicalTypeId { get; set; }        
         public string MedicalTypeCode { get; set; }
         public string MedicalTypeName { get; set; }
         public string Description { get; set; }

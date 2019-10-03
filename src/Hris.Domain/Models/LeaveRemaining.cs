@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class LeaveRemaining
+    public partial class LeaveRemaining : EntityBase
     {
-        public Guid LeaveRemainingId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid LeaveRemainingId { get; set; }        
         public Guid? EmployeeId { get; set; }
         public int? Year { get; set; }
         public int? Plafon { get; set; }

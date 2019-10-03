@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class EmployeeAsset
+    public partial class EmployeeAsset : EntityBase
     {
-        public Guid EmployeeAssetId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid EmployeeAssetId { get; set; }        
         public Guid EmployeeId { get; set; }
         public Guid? AssetId { get; set; }
         public DateTime? LendDate { get; set; }

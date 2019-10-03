@@ -8,7 +8,8 @@ namespace Hris.Application.Services.Mapper.Employees
     {
         public MappingProfile()
         {
-            CreateMap<DepartmentRequest, Department>();
+            CreateMap<DepartmentRequest, Department>()
+                .ForMember(dest => dest.DepartmentId, opt => opt.UseDestinationValue());                
         }
     }
 }

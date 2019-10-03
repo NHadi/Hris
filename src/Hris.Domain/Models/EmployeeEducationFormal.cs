@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class EmployeeEducationFormal
+    public partial class EmployeeEducationFormal : EntityBase
     {
-        public Guid EmployeeEducationFormalId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid EmployeeEducationFormalId { get; set; }        
         public Guid EmployeeId { get; set; }
         public string LevelEducationName { get; set; }
         public string SchoolName { get; set; }

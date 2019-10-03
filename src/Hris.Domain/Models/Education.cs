@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class Education
+    public partial class Education : EntityBase
     {
         public Education()
         {
@@ -11,11 +12,7 @@ namespace Hris.Domain.Models
             EmployeeFamily = new HashSet<EmployeeFamily>();
         }
 
-        public Guid EducationId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid EducationId { get; set; }        
         public string EducationCode { get; set; }
         public string EducationName { get; set; }
         public string Description { get; set; }

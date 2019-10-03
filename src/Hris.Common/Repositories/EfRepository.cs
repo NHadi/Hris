@@ -27,9 +27,18 @@ namespace Hris.Common.Repositories
         public TEntity GetById(object id)
             => _dbSet.Find(id);
         public void Insert(TEntity entitiy)
-         => _dbSet.Add(entitiy);
+        {
+            _dbSet.Attach(entitiy);
+            _unitOfWork.Context.Entry(entitiy).State = EntityState.Added;
+        }
         public void InsertRange(List<TEntity> entitiy)
-            => _dbSet.AddRange(entitiy);
+        {
+            foreach (var item in entitiy)
+            {
+                _dbSet.Attach(item);
+                _unitOfWork.Context.Entry(item).State = EntityState.Added;
+            }
+        }
         public void Update(TEntity entitiy)
         {
             _dbSet.Attach(entitiy);

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class DayType
+    public partial class DayType : EntityBase
     {
         public DayType()
         {
@@ -11,11 +12,7 @@ namespace Hris.Domain.Models
             Employee = new HashSet<Employee>();
         }
 
-        public Guid DayTypeId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid DayTypeId { get; set; }        
         public string DayTypeName { get; set; }
         public TimeSpan? DefaultIn { get; set; }
         public TimeSpan? DefaultOut { get; set; }

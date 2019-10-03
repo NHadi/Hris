@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hris.Common.API.DTO;
+using Hris.Domain.Aggregates.Master;
 using Hris.Domain.Aggregates.Master.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,17 +18,19 @@ namespace Hris.Master.WebApi.Controllers
         {
             _masterService = masterService;
         }
-        // GET api/values
         /// <summary>
-        /// GEt ALL
+        /// Get Department 
         /// </summary>
+        /// <param name="code">filter by code</param>
+        /// <param name="name">filter by name</param>
+        /// <param name="description">filter by description</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string code = null, string name = null, string description = null)
         {
             try
             {
-                var responAPI = await _masterService.GetDepartments("P01");
+                var responAPI = await _masterService.GetDepartments(new DepartmentRequest { DepartmentCode = code, DepartmentName = name, Description = description });
                 return Ok(new ApiOkResponse(responAPI, responAPI.Count));
             }
             catch (Exception ex)
@@ -36,29 +39,81 @@ namespace Hris.Master.WebApi.Controllers
             }
         }
 
-        // GET api/values/5
+        /// <summary>
+        /// Get Single Data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            try
+            {
+                var responAPI = await _masterService.GetDepartment(id);
+                return Ok(new ApiOkResponse(responAPI));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
         }
 
-        // POST api/values
+        /// <summary>
+        /// Save Department
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] DepartmentRequest request)
         {
+            try
+            {
+                await _masterService.CreateDepartment(request);
+                return Ok(new ApiResponse(200));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
         }
 
-        // PUT api/values/5
+        /// <summary>
+        /// Update Department
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] DepartmentRequest request)
         {
+            try
+            {
+                await _masterService.UpdateDepartment(id, request);
+                return Ok(new ApiResponse(200));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
         }
 
-        // DELETE api/values/5
+        /// <summary>
+        /// Delete Department
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            try
+            {
+                await _masterService.DeleteDepartment(id);
+                return Ok(new ApiResponse(200));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiBadRequestResponse(400, "Terjadi Kesalahan"));
+            }
         }
     }
 }

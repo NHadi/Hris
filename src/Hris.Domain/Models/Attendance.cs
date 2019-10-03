@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class Attendance
+    public partial class Attendance : EntityBase
     {
-        public Guid AttendanceId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid AttendanceId { get; set; }        
         public Guid? EmployeeId { get; set; }
         public string FingerCode { get; set; }
         public Guid? DayTypeId { get; set; }

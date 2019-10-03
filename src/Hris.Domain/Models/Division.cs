@@ -1,20 +1,17 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class Division
+    public partial class Division : EntityBase
     {
         public Division()
         {
             Employee = new HashSet<Employee>();
         }
 
-        public Guid DivisionId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid DivisionId { get; set; }        
         public Guid DepartmentId { get; set; }
         public string DivisionCode { get; set; }
         public string DivisionName { get; set; }

@@ -1,20 +1,17 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class TaxStatus
+    public partial class TaxStatus : EntityBase
     {
         public TaxStatus()
         {
             Employee = new HashSet<Employee>();
         }
 
-        public Guid TaxStatusId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid TaxStatusId { get; set; }        
         public string TaxStatusName { get; set; }
         public double? Ptkp { get; set; }
         public string Description { get; set; }

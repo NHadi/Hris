@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Hris.Common.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace Hris.Domain.Models
 {
-    public partial class Employee
+    public partial class Employee : EntityBase
     {
         public Employee()
         {
@@ -24,11 +25,7 @@ namespace Hris.Domain.Models
             TravellingExpense = new HashSet<TravellingExpense>();
         }
 
-        public Guid EmployeeId { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string ModifyBy { get; set; }
-        public DateTime? ModifyDate { get; set; }
+        public Guid EmployeeId { get; set; }        
         public string FingerCode { get; set; }
         public string Nik { get; set; }
         public string FullName { get; set; }

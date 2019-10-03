@@ -13,5 +13,6 @@ namespace Hris.Infrastructure.CrossCutting
             DatabaseBootsraper.InitDbBootsraper(services, configuration);
             ApplicationBootsraper.InitAppBootsraper(services);
         }
+
     }
 }

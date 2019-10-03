@@ -28,8 +28,7 @@ namespace Hris.Master.WebApi
         {
             services.InitCommonBootsraper();            
             services.InitIoCBootsraper(Configuration);
-            services.AddAutoMapper(typeof(MappingProfile));
-
+            
             string xmlPath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "swagger.xml");
             services.ConfigSwagger("Master Service", xmlPath);
 

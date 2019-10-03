@@ -4,12 +4,12 @@ using Hris.Domain.Models;
 
 namespace Hris.Application.Services.Mapper.Employees
 {
-    public partial class MappingProfile : Profile
+    public partial class MasterMappingProfile : Profile
     {
-        public MappingProfile()
+        public MasterMappingProfile()
         {
             CreateMap<DepartmentRequest, Department>()
-                .ForMember(dest => dest.DepartmentId, opt => opt.UseDestinationValue());                
+                   .ForMember(dest => dest.DepartmentId, opt => opt.UseDestinationValue());
         }
     }
 }
